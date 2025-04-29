@@ -1,5 +1,5 @@
 # Final-Project
- **While viewing the colab Notebook directly on GitHub, it may encounter a rendering error stating "'state' key is missing from 'metadata.widgets'". It is because of the GitHub display limitation for interactive widgets. For proper viewing, Please Download the notebook.**
+♦️ **While viewing the colab Notebook directly on GitHub, it may encounter a rendering error stating "'state' key is missing from 'metadata.widgets'". It is because of the GitHub display limitation for interactive widgets. For proper viewing, Please Download the notebook.**♦️
 
  Topic :
  **Disease Detection in Cassava Plant using Deep Learning-Based Image classification**
