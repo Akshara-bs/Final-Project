@@ -41,10 +41,14 @@ The Hybrid Model achieved 64% accuracy, outperforming both EfficientNet (61%) an
    - Label encoding
    - Normalization
    - Train-validation-test split(training set-70%, Validation set-15%,Test set- 15%)
+
+
 *Model architecture*
    - Hybrid Model with -Custom CNN block and MobileNetV2 as feature extractor -Fully connected classifier layer
    - EfficienetNetB0
    - ResNet50
+
+
 *Training Configuration*
    -Epochs : 20
   -Batch size: 10
