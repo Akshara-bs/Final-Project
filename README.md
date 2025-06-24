@@ -1,10 +1,10 @@
 # Final-Project
-♦️ **While viewing the colab Notebook directly on GitHub, it may encounter a rendering error stating "'state' key is missing from 'metadata.widgets'". It is because of the GitHub display limitation for interactive widgets. For proper viewing, Please Download the notebook.**♦️
+♦️ **While viewing the colab Notebook directly on GitHub, it may encounter a rendering error stating "unable to rendor code file". It is because of the GitHub display limitation for interactive widgets. For proper viewing, Please Download the notebook.**♦️
 
  Topic :
  **Disease Detection in Cassava Plant using Deep Learning-Based Image classification**
 
- This project focuses on the classification of cassava plant leaf disease using deep learning techniques. A hybrid model combining a custom CNN with MobileNetV2 was developed and compared with EfficientNetB0 and ResNet50 to assess performance, generalization, and computational efficiency.
+ This project focuses on the classification of cassava plant leaf disease using deep learning techniques. A  custom CNN was developed and compared with EfficientNetB0 and ResNet50 to assess performance, generalization, and computational efficiency.
 
 The research question guiding the initiative is therefore:
 *How can machine learning techniques be applied to accurately classify images of cassava plants into specific disease categories, and what is the most effective model architecture for this task?* 
@@ -18,7 +18,6 @@ To develop an accurate and accessible deep learning-based system for automatic c
 •	Design and evaluate multiple deep learning architectures, including:
 •	A custom Convolutional Neural Network (CNN)
 •	Transfer learning models (EfficientNet, ResNet)
-•	A hybrid CNN-MobileNet architecture for efficiency.
 •	Assess performance using metrics like precision, recall, F1-score, and accuracy.
 •	Develop a user-friendly interface for real-time image uploads and predictions.
 
@@ -33,27 +32,26 @@ To develop an accurate and accessible deep learning-based system for automatic c
 The photographs are categorised and structured using two main elements: a train.csv file which associates image filenames with their corresponding illness diagnoses, and a train_images/ directory that has the real leaf images.
 
 **Models Used**
-The Hybrid Model achieved 64% accuracy, outperforming both EfficientNet (61%) and ResNet50 (61%) by capturing a broader range of features, improving classification accuracy.
+The Custom CNN Model achieved 76% accuracy, and other pretrained model such as efficientnet and resnet occur accuracies 82% and 78% respectively by capturing a broader range of features, improving classification accuracy.
 
 **Methodology**
 *Data Preprocessing*
-    -Resized images to 128x128
-   - Label encoding
-   - Normalization
-   - Train-validation-test split(training set-70%, Validation set-15%,Test set- 15%)
-
+-Resized images to 150x150 .
+ -Label encoding for categorical labels.
+ -Normalization of pixel values (scaling to 0-1 for the Custom CNN, and using ImageNet mean/std for EfficientNetand resnet).
+ -Train-validation split (80% training, 20% validation) for all models
+- Oversampling was applied to the training set of the Custom CNN to balance class distribution. Weighted Random Sampler was used for the training set of the EfficientNet and resnet models to handle class imbalance during training.
+-Data Augmentation was applied to the training data using ImageDataGenerator for the Custom CNN and torchvision.transforms for EfficientNet and resnet.
 
 *Model architecture*
-   - Hybrid Model with -Custom CNN block and MobileNetV2 as feature extractor -Fully connected classifier layer
-   - EfficienetNetB0
-   - ResNet50
+   -Custom CNN
+Sequential model with convolutional, max pooling, batch normalization, and dropout layers.
+Flatten layer followed by dense layers for classification.
+-EfficientNetB0 and resnet
+Pre-trained EfficientNetB0 model loaded from torchvision.models.
+Modified the classifier layer to have 5 output classes.
 
 
-*Training Configuration*
-   -Epochs : 20
-  -Batch size: 10
-  -optimizer: Adam
- - Callbacks:ModelCheckpoint,ReduceLROnPlateau
 
 
 **Evaluation Metrics**
@@ -61,7 +59,7 @@ The Hybrid Model achieved 64% accuracy, outperforming both EfficientNet (61%) an
     -Precision
     -Recall
     -F1-Score
-     ROC Curve
+   
 
 
 **User Interface**
@@ -71,6 +69,9 @@ An interactive interface was developed using ipywidgets in google colab to:
 - Visualize classification results
 
 **Key Insights**
-Hybrid CNN + MobileNetV2 demonstrated the best generalization in real-world conditions.
-The model's low parameter count and fast training make it ideal for low-resource environments.
-The interface allows practical field use for farmers and agronomists.
+The code trains and evaluates two different models: a Custom CNN and a pre-trained EfficientNetB0 and resnet.
+Data balancing techniques (oversampling for CNN, Weighted Random Sampler for EfficientNet and resnet) were used to address class imbalance.
+The code includes visualizations of the data distribution before and after balancing (simulated for EfficientNet and resnet).
+Training history (loss and accuracy) is plotted for all models.
+Detailed evaluation metrics (Classification Report and Confusion Matrix) are provided for the validation set for all models.
+A basic command-line style interface within the notebook allows for prediction on individual images using the trained model.
